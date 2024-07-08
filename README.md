@@ -1,5 +1,6 @@
 # Todo
 This is a command line extension that will keep progress in a digestive format for any git project or directory
+Basically a journal/version control that keeps a timeline of events/edits for a project
 
 
 This should be able to identify a file with the file name todo.txt
@@ -17,3 +18,10 @@ Simple command line integration with user
 
 Future integration with GIT
 - Have to think of ways to integrate with GIT
+
+
+
+
+
+As of July 7th
+using cobra to set up the cli applicatio interface

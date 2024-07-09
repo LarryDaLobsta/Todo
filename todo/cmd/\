@@ -1,0 +1,48 @@
+/*
+Copyright © 2024 NAME HERE <EMAIL ADDRESS>
+
+*/
+package cmd
+
+import (
+	_ "fmt"
+	"time"
+
+	"github.com/spf13/cobra"
+)
+
+// timeCmd represents the time command
+var timeCmd = &cobra.Command{
+	Use:   "time",
+	Short: "time test",
+	Long: `Time test thing`,
+	Run: getTimeInTimezone,
+}
+
+
+
+
+func getTimeInTimezone() (string, error) {
+ location, err := time.LoadLocation("EST")
+ if err != nil {
+  return "Here", err
+ }
+ currentTime := time.Now().In(location)
+ return currentTime.Format(time.RFC1123), nil
+}
+
+func init() {
+	rootCmd.AddCommand(timeCmd)
+
+	// Here you will define your flags and configuration settings.
+
+	generateCmd.Flags().IntP("timezone", "t", "EST", "Desired timezone")
+
+	// Cobra supports Persistent Flags which will work for this command
+	// and all subcommands, e.g.:
+	// timeCmd.PersistentFlags().String("foo", "", "A help for foo")
+
+	// Cobra supports local flags which will only run when this command
+	// is called directly, e.g.:
+	// timeCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+}
